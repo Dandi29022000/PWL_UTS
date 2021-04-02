@@ -18,7 +18,9 @@ class BarangController extends Controller
             ['nama_barang','!=',Null],
             [function($query)use($request){
                 if (($term = $request->term)) {
-                    $query->orWhere('nama_barang','LIKE','%'.$term.'%')->get();
+                    $query->orWhere('nama_barang','LIKE','%'.$term.'%')
+                          ->orWhere('kode_barang','LIKE','%'.$term.'%')
+                          ->orWhere('kategori_barang','LIKE','%'.$term.'%')->get();
                 }
             }]
         ])
